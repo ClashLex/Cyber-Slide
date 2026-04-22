@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Force dark background globally */
+html, body, #root {
+  height: 100%;
+  background-color: #04040f;
+}

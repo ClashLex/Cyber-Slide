@@ -1,85 +1,179 @@
+<div align="center">
+
 # ⚡ CyberSlide
 
-A sleek, neon-styled sliding puzzle game built with **React + Vite + TailwindCSS**.  
-Designed for smooth gameplay, modern visuals, and high replay value.
+**A neon-styled sliding puzzle game built with React + Vite + TypeScript.**
+
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-CyberSlide-00f5d4?style=for-the-badge&logo=github)](https://clashlex.github.io/Cyber-Slide)
+[![License](https://img.shields.io/badge/License-MIT-7209b7?style=for-the-badge)](LICENSE)
+[![Built with Vite](https://img.shields.io/badge/Built_with-Vite-f72585?style=for-the-badge&logo=vite)](https://vitejs.dev)
+
+</div>
 
 ---
 
-## 🎮 Live Demo
+## 🎮 Overview
 
-👉 https://clashlex.github.io/Cyber-Slide
+CyberSlide is a classic sliding puzzle wrapped in a cyberpunk neon aesthetic. Slide tiles into order — fast, clean, and replayable.
+
+**Goal:** Arrange tiles 1→25 in order, with the empty cell at the extra bottom-right position.
 
 ---
 
 ## ✨ Features
 
-- 🧩 Classic sliding puzzle mechanics (3×3, 4×4, 5×5…)
-- ⚡ Smooth animations & transitions
-- 🌌 Neon / cyberpunk-inspired UI
-- 🎯 Multiple difficulty modes
-- 🧠 Replayable & challenging gameplay
-- 🧱 Modular architecture (components + game logic separated)
+| Feature | Description |
+|---|---|
+| 🧩 Sliding Puzzle | Classic 5×5 + 1 irregular cell mechanic |
+| ⚡ Hardcore Modes | 6 toggleable modes (obstacles, locked tiles, one-way, timer, and more) |
+| 🎯 Move Limit | Optional 200-move cap for extra challenge |
+| ⏱️ Countdown Timer | Optional 180-second race mode |
+| 🔊 Sound Effects | Procedural audio via Web Audio API — no external files |
+| 🎨 Neon UI | Cyberpunk glows, scanlines, FLIP tile animations |
+| ⌨️ Keyboard Support | Full arrow key navigation |
+| 🏆 Win Rating | LEGENDARY / ELITE / HACKER based on moves + time |
 
 ---
 
 ## 🛠️ Tech Stack
 
-- React 19
-- Vite
-- TypeScript
-- TailwindCSS
-- gh-pages (deployment)
+- **React 19** — UI & component architecture
+- **TypeScript** — Full type safety
+- **Vite** — Dev server & build tool
+- **TailwindCSS** — Utility styling
+- **Web Audio API** — Procedural sound effects
+- **gh-pages** — GitHub Pages deployment
 
 ---
 
 ## 📂 Project Structure
-puzzle-v3/ ├── src/ │   ├── components/ │   │   ├── Board.tsx │   │   ├── Tile.tsx │   │   ├── HUD.tsx │   │   ├── ModePanel.tsx │   │   └── WinModal.tsx │   │ │   ├── game/ │   │   ├── puzzleLogic.ts │   │   ├── modes.ts │   │   ├── graph.ts │   │   └── sounds.ts │   │ │   ├── hooks/ │   │   └── useGameState.ts │   │ │   ├── utils/ │   │   ├── cn.ts │   │   └── tileColors.ts │   │ │   ├── styles/ │   │   └── game.css │   │ │   ├── App.tsx │   └── main.tsx │ ├── index.html ├── package.json ├── tsconfig.json └── vite.config.ts
+
+```
+puzzle-v3/
+├── src/
+│   ├── components/
+│   │   ├── Board.tsx        # Grid renderer, obstacle/lost overlays
+│   │   ├── Tile.tsx         # Individual tile with FLIP animation
+│   │   ├── HUD.tsx          # Moves, timer, control buttons
+│   │   ├── ModePanel.tsx    # Hardcore mode toggles
+│   │   └── WinModal.tsx     # Win screen with star rating
+│   │
+│   ├── game/
+│   │   ├── puzzleLogic.ts   # Board state, shuffle, move validation
+│   │   ├── modes.ts         # Mode definitions and metadata
+│   │   ├── graph.ts         # Adjacency map, mode-aware neighbor filtering
+│   │   └── sounds.ts        # Web Audio procedural sound effects
+│   │
+│   ├── hooks/
+│   │   └── useGameState.ts  # All game state, timer, keyboard, modes
+│   │
+│   ├── utils/
+│   │   ├── cn.ts            # Class name utility
+│   │   └── tileColors.ts    # 25 unique neon tile gradients
+│   │
+│   ├── styles/
+│   │   └── game.css         # Full cyberpunk stylesheet
+│   │
+│   ├── App.tsx
+│   └── main.tsx
+│
+├── index.html
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the repo
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Setup
 
 ```bash
+# Clone the repo
 git clone https://github.com/ClashLex/Cyber-Slide.git
 cd Cyber-Slide
-2. Install dependencies
-Bash
+
+# Install dependencies
 npm install
-3. Run locally
-Bash
+
+# Run locally
 npm run dev
-4. Build project
-Bash
+
+# Build for production
 npm run build
-5. Deploy to GitHub Pages
-Bash
+
+# Deploy to GitHub Pages
 npm run deploy
-⚙️ Configuration
-Make sure your package.json includes:
-JSON
+```
+
+### GitHub Pages config
+
+Ensure `package.json` has:
+
+```json
 "homepage": "https://clashlex.github.io/Cyber-Slide"
-🧠 Future Improvements
-🔊 Sound effects & music toggle
-🏆 Leaderboard / scoring system
-🎨 Theme customization
-🧩 More puzzle variations
-📱 Better mobile gestures
-🧠 AI solver / hint system
-🤝 Contributing
-Contributions are welcome!
-Fork the repo
-Create a new branch
-Make changes
-Submit a pull request
-📜 License
-This project is licensed under the MIT License.
-⭐ Support
-If you like this project:
-Star the repo
-Fork it
-Share it
-Built with ⚡ in Termux
+```
 
 ---
+
+## ⚡ Hardcore Modes
+
+Toggle any combination from the in-game Mode Panel. Activating a mode auto-reshuffles the board.
+
+| Mode | Effect |
+|---|---|
+| **Move Limit** | Game over after 200 moves |
+| **Timer** | 180-second countdown |
+| **Obstacles** | Cell 12 is permanently blocked |
+| **Locked Tile** | Tile at index 5 cannot be moved |
+| **One-Way** | Tiles can only slide to higher-indexed cells |
+| **Hardcore Shuffle** | 300-step shuffle instead of 150 |
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Leaderboard / scoring system
+- [ ] Theme customization
+- [ ] Additional puzzle grid sizes
+- [ ] Mobile swipe gestures
+- [ ] AI solver / hint system
+- [ ] Background music toggle
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome.
+
+```bash
+# 1. Fork the repo
+# 2. Create your branch
+git checkout -b feature/your-feature
+
+# 3. Commit your changes
+git commit -m "feat: add your feature"
+
+# 4. Push and open a PR
+git push origin feature/your-feature
+```
+
+---
+
+## 📜 License
+
+MIT License — see [LICENSE](LICENSE) for details.
+
+---
+
+<div align="center">
+
+Built with ⚡ in Termux &nbsp;·&nbsp; by [ClashLex](https://github.com/ClashLex)
+
+</div>

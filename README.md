@@ -75,9 +75,6 @@ Make changes
 Submit a pull request
 📜 License
 This project is licensed under the MIT License.
-👤 Author
-ClashLex
-ansilmuhammed919@gmail.com
 ⭐ Support
 If you like this project:
 Star the repo

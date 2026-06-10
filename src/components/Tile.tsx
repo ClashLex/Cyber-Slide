@@ -73,9 +73,6 @@ const Tile: React.FC<TileProps> = memo(
           style={{
             gridColumn: col,
             gridRow: row,
-            background: "linear-gradient(135deg, #2a0000, #4a0000)",
-            border: "1.5px solid #ff4444",
-            boxShadow: "0 0 14px 3px #ff444488, inset 0 0 20px rgba(255,68,68,0.1)",
           }}
         >
           <span className="tile-shine" aria-hidden="true" />
@@ -100,14 +97,6 @@ const Tile: React.FC<TileProps> = memo(
         tabIndex={isMovable ? 0 : -1}
         style={{
           background: gradient,
-          boxShadow: isMovable
-            ? `0 0 14px 3px ${glowColor}88, 0 0 28px 6px ${glowColor}33, inset 0 1px 0 rgba(255,255,255,0.22), 0 4px 12px rgba(0,0,0,0.5)`
-            : isLockedByMode
-            ? `0 0 8px 2px #a044ff88, inset 0 1px 0 rgba(255,255,255,0.1)`
-            : `0 0 5px 1px ${glowColor}33, inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 6px rgba(0,0,0,0.4)`,
-          border: isLockedByMode
-            ? "1.5px solid #a044ffbb"
-            : `1.5px solid ${glowColor}${isMovable ? "bb" : "44"}`,
           gridColumn: col,
           gridRow: row,
         }}

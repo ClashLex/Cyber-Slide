@@ -25,11 +25,11 @@ CyberSlide is a classic sliding puzzle wrapped in a cyberpunk neon aesthetic. Sl
 | Feature | Description |
 |---|---|
 | 🧩 Sliding Puzzle | Classic 5×5 + 1 irregular cell mechanic |
-| ⚡ Hardcore Modes | 6 toggleable modes (obstacles, locked tiles, one-way, timer, and more) |
+| ⚡ Hardcore Modes | 5 toggleable modes (obstacles, locked tiles, timer, and more) |
 | 🎯 Move Limit | Optional 200-move cap for extra challenge |
 | ⏱️ Countdown Timer | Optional 180-second race mode |
 | 🔊 Sound Effects | Procedural audio via Web Audio API — no external files |
-| 🎨 Neon UI | Cyberpunk glows, scanlines, FLIP tile animations |
+| 🎨 Neo-Brutalist UI | Stark block borders, flat drop shadows, and high-contrast styling |
 | ⌨️ Keyboard Support | Full arrow key navigation |
 | 🏆 Win Rating | LEGENDARY / ELITE / HACKER based on moves + time |
 
@@ -131,8 +131,7 @@ Toggle any combination from the in-game Mode Panel. Activating a mode auto-reshu
 | **Move Limit** | Game over after 200 moves |
 | **Timer** | 180-second countdown |
 | **Obstacles** | Cell 12 is permanently blocked |
-| **Locked Tile** | Tile at index 5 cannot be moved |
-| **One-Way** | Tiles can only slide to higher-indexed cells |
+| **Locked Tile** | Tile at cell index 5 cannot be moved |
 | **Hardcore Shuffle** | 300-step shuffle instead of 150 |
 
 ---

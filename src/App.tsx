@@ -3,7 +3,7 @@
  * Full V1 cyberpunk UI + V2 game modes panel integrated.
  */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Board from "./components/Board";
 import HUD from "./components/HUD";
 import WinModal from "./components/WinModal";
@@ -29,6 +29,8 @@ const App: React.FC = () => {
     toggleSound,
     toggleMode,
   } = useGameState();
+
+  const [showModes, setShowModes] = useState(false);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -65,6 +67,8 @@ const App: React.FC = () => {
           isSoundOn={isSoundOn}
           isLost={isLost}
           modes={modes}
+          showModes={showModes}
+          onToggleModesPanel={() => setShowModes((prev) => !prev)}
           onShuffle={shuffle}
           onRestart={restart}
           onToggleSound={toggleSound}
@@ -91,7 +95,7 @@ const App: React.FC = () => {
         </div>
 
         {/* V2: Mode Panel */}
-        <ModePanel modes={modes} onToggle={toggleMode} />
+        {showModes && <ModePanel modes={modes} onToggle={toggleMode} />}
 
         {/* Footer */}
         <footer className="game-footer">

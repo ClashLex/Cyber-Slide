@@ -73,11 +73,11 @@ export function generateShuffledBoard(
 
   for (let i = 0; i < moveCount; i++) {
     const allNeighbors = ADJACENCY.get(emptyCell)!;
-    // Filter out last position (avoid reversal), obstacles, and oneWay constraints
+    // Filter out last position (avoid reversal), obstacles, and lockedTiles constraints
     let candidates = allNeighbors.filter((n) => {
       if (n === lastEmpty) return false;
       if (modes.obstacles && n === 12) return false;
-      if (modes.oneWay && n > emptyCell) return false;
+      if (modes.lockedTiles && n === 5) return false;
       return true;
     });
 
@@ -85,6 +85,7 @@ export function generateShuffledBoard(
     if (candidates.length === 0) {
       candidates = allNeighbors.filter((n) => {
         if (modes.obstacles && n === 12) return false;
+        if (modes.lockedTiles && n === 5) return false;
         return true;
       });
     }
@@ -112,8 +113,6 @@ export function getMovableCells(board: Board, modes: GameModes): number[] {
     if (modes.obstacles && emptyCell === 12) return false;
     // Obstacle tile cannot move
     if (modes.obstacles && n === 12) return false;
-    // One-way: tiles can only slide to higher-indexed cells (n must be < emptyCell)
-    if (modes.oneWay && n > emptyCell) return false;
     return true;
   });
 }

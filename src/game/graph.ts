@@ -50,12 +50,6 @@ export function getNeighbors(cellIndex: number, modes: GameModes): number[] {
 
   let neighbors = [...(ADJACENCY.get(cellIndex) ?? [])];
 
-  // V2: One-way mode — can only slide into higher-indexed empty cells
-  // (i.e., neighbors must have a smaller index than the empty target cellIndex)
-  if (modes.oneWay) {
-    neighbors = neighbors.filter((n) => n < cellIndex);
-  }
-
   // V2: Obstacles mode — cell 12 is permanently blocked
   if (modes.obstacles) {
     neighbors = neighbors.filter((n) => n !== 12);
@@ -79,14 +73,7 @@ export function canMove(
   // Locked tile: tile at cell index 5 is locked and cannot move
   if (modes.lockedTiles && tileCell === 5) return false;
 
-  // Get neighbors of emptyCell — a tile can move if it is a neighbor of empty
-  // But for oneWay, we check neighbors of tileCell (the tile slides toward higher index)
-  if (modes.oneWay) {
-    // In oneWay mode, a tile can only move if the empty cell has a HIGHER index
-    if (emptyCell < tileCell) return false;
-  }
-
-  // Check standard adjacency (ignoring oneWay direction since we checked above)
+  // Check standard adjacency
   const baseNeighbors = ADJACENCY.get(emptyCell) ?? [];
   if (!baseNeighbors.includes(tileCell)) return false;
 

@@ -112,13 +112,19 @@ npm run build
 npm run deploy
 ```
 
-### GitHub Pages config
+### Deployment Configuration
 
+#### GitHub Pages
 Ensure `package.json` has:
-
 ```json
 "homepage": "https://clashlex.github.io/Cyber-Slide"
 ```
+
+#### Cloudflare Pages
+To host the game on Cloudflare Pages:
+1. Set the **Build Command** to `npm run build`
+2. Set the **Build Output Directory** to `dist`
+3. Static hosting files (`_headers` for CORS/security and `_redirects` for routing fallbacks) are automatically served from `public/` and copied to `dist/` during builds.
 
 ---
 

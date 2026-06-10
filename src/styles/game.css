@@ -926,6 +926,20 @@ body {
   color: #fff;
 }
 
+.win-btn-share {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.1), inset 0 0 16px rgba(255, 255, 255, 0.02);
+}
+
+.win-btn-share:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
 /* Win Particles */
 .win-particles {
   position: absolute;
@@ -1285,4 +1299,26 @@ body {
 @keyframes dangerFlicker {
   0%   { opacity: 0.85; }
   100% { opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   Responsiveness optimizations for short viewports
+   -------------------------------------------------------------------------- */
+@media (max-height: 760px) {
+  .game-container {
+    gap: clamp(8px, 1.2vh, 16px);
+    padding: clamp(8px, 2vw, 16px);
+  }
+  .game-header {
+    gap: 2px;
+  }
+  .mode-panel {
+    padding: clamp(8px, 1.5vw, 12px);
+  }
+  .mode-panel-title {
+    margin-bottom: 6px;
+  }
+  .hud {
+    padding: clamp(8px, 1.5vw, 12px);
+  }
 }

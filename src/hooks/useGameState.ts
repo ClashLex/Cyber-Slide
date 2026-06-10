@@ -137,7 +137,7 @@ export function useGameState(): GameState {
         case "ArrowDown":
           e.preventDefault();
           {
-            const above = emptyCell - 5;
+            const above = emptyCell === 25 ? 24 : emptyCell - 5;
             if (above >= 0 && movableCells.has(above)) targetCell = above;
           }
           break;

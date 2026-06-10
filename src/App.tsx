@@ -108,6 +108,7 @@ const App: React.FC = () => {
         <WinModal
           moves={moves}
           time={time}
+          modes={modes}
           onRestart={restart}
           onShuffle={shuffle}
         />

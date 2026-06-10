@@ -4,7 +4,7 @@
 
 **A neon-styled sliding puzzle game built with React + Vite + TypeScript.**
 
-[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-CyberSlide-00f5d4?style=for-the-badge&logo=github)](https://cyberslide.pages.dev)
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-CyberSlide-00f5d4?style=for-the-badge&logo=github)](https://cyber-slide.pages.dev)
 [![License](https://img.shields.io/badge/License-MIT-7209b7?style=for-the-badge)](LICENSE)
 [![Built with Vite](https://img.shields.io/badge/Built_with-Vite-f72585?style=for-the-badge&logo=vite)](https://vitejs.dev)
 

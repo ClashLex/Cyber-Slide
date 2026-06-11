@@ -95,7 +95,9 @@ const App: React.FC = () => {
         </div>
 
         {/* V2: Mode Panel */}
-        {showModes && <ModePanel modes={modes} onToggle={toggleMode} />}
+        <div className={`mode-panel-container ${showModes ? "expanded" : "collapsed"}`}>
+          <ModePanel modes={modes} onToggle={toggleMode} />
+        </div>
 
         {/* Footer */}
         <footer className="game-footer">

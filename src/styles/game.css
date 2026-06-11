@@ -20,8 +20,8 @@
   --text-primary:  #000000;
   --text-dim:      #444444;
 
-  --tile-size:     clamp(48px, 10vw, 80px);
-  --tile-gap:      clamp(6px, 1vw, 10px);
+  --tile-size:     clamp(38px, min(8.5vw, 7.8vh), 72px);
+  --tile-gap:      clamp(4px, min(1vw, 1vh), 8px);
   --border-radius: 4px; /* Blocky/sharp border radius */
   
   --font-mono:     'Share Tech Mono', 'Courier New', monospace;
@@ -540,9 +540,25 @@ body {
   color: var(--neo-pink) !important;
 }
 
-/* --------------------------------------------------------------------------
-   Mode Panel Card
-   -------------------------------------------------------------------------- */
+/* Mode Panel Animation Wrapper */
+.mode-panel-container {
+  width: 100%;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-bottom: 0;
+  padding-right: 0;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, padding 0.35s ease, margin-top 0.3s ease;
+}
+
+.mode-panel-container.expanded {
+  max-height: 350px;
+  opacity: 1;
+  padding-bottom: 8px; /* Space for neo-brutalist shadow */
+  padding-right: 8px;  /* Space for neo-brutalist shadow */
+  margin-top: 8px;
+}
+
 .mode-panel {
   width: 100%;
   background: var(--neo-white);
@@ -861,46 +877,109 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   Responsiveness
+   Responsiveness & Desktop Columns
    -------------------------------------------------------------------------- */
-@media (max-width: 520px) {
+
+/* Desktop Two-Column Layout */
+@media (min-width: 900px) and (min-height: 500px) {
+  .game-container {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 40px;
+    row-gap: 16px;
+    align-items: start;
+  }
+
+  .game-header {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .hud {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .mode-panel-container {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .board-wrapper {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .game-footer {
+    grid-column: 1 / span 2;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 767px) {
   :root {
-    --tile-size: clamp(42px, 16vw, 60px);
-    --tile-gap: 5px;
+    --tile-size: clamp(38px, min(14vw, 7.2vh), 52px);
+    --tile-gap: 4px;
+  }
+  .app-root {
+    padding: 8px 4px;
+  }
+  .game-container {
+    gap: 10px;
+    padding: 10px 8px;
+  }
+  .hud {
+    padding: 10px 12px;
+    gap: 8px;
   }
   .hud-stats {
     gap: 6px;
   }
   .stat-box {
-    min-width: 70px;
+    min-width: 75px;
+    padding: 4px 2px;
   }
   .board-container {
-    padding: 10px;
+    padding: 8px;
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 520px) {
   :root {
-    --tile-size: clamp(36px, 15vw, 50px);
+    --tile-size: clamp(34px, min(15vw, 6.8vh), 46px);
     --tile-gap: 4px;
   }
+  .hud-stats {
+    gap: 6px;
+  }
+  .stat-box {
+    min-width: 65px;
+  }
+  .board-container {
+    padding: 6px;
+  }
 }
 
-@media (max-height: 760px) {
+@media (max-height: 780px) {
   .game-container {
-    gap: 12px;
-    padding: 12px;
+    gap: 10px;
+    padding: 10px 8px;
   }
   .game-header {
     gap: 2px;
   }
-  .mode-panel {
-    padding: 10px;
-  }
-  .mode-panel-title {
-    margin-bottom: 8px;
-  }
   .hud {
-    padding: 12px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .hud-instructions {
+    padding-top: 4px;
   }
 }
